@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def update
+    binding.pry
     redirect_to root_path, error: 'Must be logged in!' unless user_signed_in? && from_linkedin?
     if current_user.build_linkedin.from_omniauth(request.env['omniauth.auth'], linkedin_access_token.token)
       redirect_to root_url, notice: 'Successfully linked your LinkedIn profile!'

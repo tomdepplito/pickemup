@@ -53,4 +53,5 @@ group :test, :development do
   gem 'pry'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'pry-rails'
 end
