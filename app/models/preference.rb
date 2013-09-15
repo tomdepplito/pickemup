@@ -90,4 +90,8 @@ class Preference < ActiveRecord::Base
   def api_attributes
     self.attributes
   end
+
+  def matchable?
+    self.preference.preference_percentage_filled >= 90.0
+  end
 end
