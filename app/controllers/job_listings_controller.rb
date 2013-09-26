@@ -32,6 +32,7 @@ class JobListingsController < ApplicationController
     @job_listing = @company.job_listings.build
     if @job_listing.update(@bathed_params)
       @job_listing.api_create
+      @job_listing.api_update_scores
       respond_with(@job_listing, location: nil, status: :created)
     else
       render json: { errors: @job_listing.errors }, status: :bad_request
@@ -41,6 +42,7 @@ class JobListingsController < ApplicationController
   def update_listing
     if @job_listing.update(@bathed_params)
       @job_listing.api_update
+      @job_listing.api_update_scores
       respond_with @job_listing
     else
       render json: { errors: @job_listing.errors }, status: :bad_request

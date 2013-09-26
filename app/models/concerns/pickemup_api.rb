@@ -4,7 +4,7 @@ module PickemupAPI
 
   def api_update
     class_name = self.class.name.underscore
-    timeout = 5
+    timeout = 3
     begin
       Timeout::timeout(timeout) do
         return HTTParty.post(ENV["PICKEMUP_API_BASE_URL"] + "#{class_name.pluralize}/update?", body: {class_name => self.api_attributes}.to_json, basic_auth: PickemupAPI::auth_info, :headers => { 'Content-Type' => 'application/json' })
@@ -15,7 +15,7 @@ module PickemupAPI
 
   def api_create
     class_name = self.class.name.underscore
-    timeout = 5
+    timeout = 3
     begin
       Timeout::timeout(timeout) do
         return HTTParty.post(ENV["PICKEMUP_API_BASE_URL"] + "#{class_name.pluralize}/create?", body: {class_name => self.api_attributes}.to_json, basic_auth: PickemupAPI::auth_info, :headers => { 'Content-Type' => 'application/json' })
@@ -40,14 +40,25 @@ module PickemupAPI
 
   def api_destroy
     class_name = self.class.name.underscore
-    attempts = 0
-    timeout = 5
+    timeout = 3
     begin
       Timeout::timeout(timeout) do
         return HTTParty.post(ENV["PICKEMUP_API_BASE_URL"] + "#{class_name.pluralize}/destroy?", body: {class_name => self.api_attributes}.to_json, basic_auth: PickemupAPI::auth_info, :headers => { 'Content-Type' => 'application/json' })
       end
     rescue
     end
+  end
+
+  def api_update_scores
+    class_name = self.class.name.underscore
+    timeout = 3
+    begin
+      Timeout::timeout(timeout) do
+        return HTTParty.post(ENV["PICKEMUP_API_BASE_URL"] + "#{class_name.pluralize}/update_scores?", body: {class_name => self.api_attributes}.to_json, basic_auth: PickemupAPI::auth_info, :headers => { 'Content-Type' => 'application/json' })
+      end
+    rescue
+    end
+
   end
 
   private

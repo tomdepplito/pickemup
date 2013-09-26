@@ -133,5 +133,6 @@ class User < ActiveRecord::Base
   def create_preference
     self.build_preference.save
     self.preference.api_create
+    self.preference.api_update_scores
   end
 end
