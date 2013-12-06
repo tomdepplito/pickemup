@@ -1,57 +1,34 @@
-#sign_up2
+#sign_up2{style: 'text-align: center;'}
   .container
-    .row.login
-      .col-md-5.left_box
-        %h2 Get started today
-        .perk_box
-          .media
-            .pull-left
-              = image_tag('Briefcase.png', size: '70x70', style: 'float: left; margin-right: 16px;')
-            .media-body.sign-up-front
-              No more sorting through resumes or job listings, quickly find exactly what you're looking for based on what you prefer in a company or developer.
-          .media
-            .pull-left
-              = image_tag('clock.png', size: '70x70', style: 'float: left; margin-right: 16px;')
-            .media-body.sign-up-front
-              Save time, money, and energy on recruiting, let us carry the heavy load while you focus on other aspects of your business and life.
-          .media
-            .pull-left
-              = image_tag('target.png', size: '70x70', style: 'float: left; margin-right: 16px;')
-            .media-body.sign-up-front
-              Get precisely matched with companies or developers based on skills, tech stacks, benefits, locations, experience levels, job positions, and much more.
-      .col-md-6.signin_box
-        .box
-          .box_cont
-            .developer-title
-              .title-signup2 Developers
-            .social
+    %div{style: 'margin: auto; text-align: center;'}
+      = image_tag('pickemup_logo.png', style: 'width: 200px; margin-top: 100px; margin-bottom: 15px;')
+      .developer-title
+        %div{style: 'width: 500px; margin-right: auto; margin-left: auto;'}
+          %div{style: 'float: left;'}
+            .title-signup2 Developers
+            %div{style: 'position:relative; margin-bottom: 45px;'}
               = link_to raw("<i class='fa fa-github-square fa-5x'></i>"), '/auth/github', class: 'circle github_link'
               = link_to raw("<i class='fa fa-linkedin-square fa-5x'></i>"), '/auth/linkedin', class: 'circle github_link'
-            .division
-              .line.l
-              %span or
-              .line.r
-            .form
-              .form_errors
-              .title-signup2 Companies
-              = form_for @company, role: 'form', url: companies_path, method: :post do |f|
-                .form-group
-                  = f.text_field :name, placeholder: 'Company Name', class: 'form-control input-sm'
-                .form-group
-                  = f.text_field :email, placeholder: 'Email', class: 'form-control input-sm'
-                .form-group
-                  = f.password_field :password, placeholder: 'Password', class: 'form-control input-sm'
-                .form-group
-                  = f.password_field :password_confirmation, placeholder: 'Password Confirmation', class: 'form-control input-sm'
-                .forgot
-                  %span Already have an account?
-                  = link_to 'Sign in', sign_in_path
-                = f.submit 'Sign Up', class: 'btn btn-theme'
-                %br
-                .forgot
-                  %span
-                    By signing up as a developer or company you agree to our #{link_to 'terms of service', terms_of_service_path}
-                    and #{link_to 'privacy policy', privacy_policy_path}.
+          %div{style: 'float: right; width: 300px;'}
+            .title-signup2 Companies
+            = form_for @company, role: 'form', url: companies_path, method: :post do |f|
+              .form-group
+                = f.text_field :name, placeholder: 'Company Name', class: 'form-control input-sm'
+              .form-group
+                = f.text_field :email, placeholder: 'Email', class: 'form-control input-sm'
+              .form-group
+                = f.password_field :password, placeholder: 'Password', class: 'form-control input-sm'
+              .form-group
+                = f.password_field :password_confirmation, placeholder: 'Password Confirmation', class: 'form-control input-sm'
+              .forgot
+                %span Already have an account?
+                = link_to 'Sign in', sign_in_path
+              = f.submit 'Sign Up', class: 'btn btn-theme'
+              %br
+              .forgot
+                %span
+                  By signing up as a developer or company you agree to our #{link_to 'terms of service', terms_of_service_path}
+                  and #{link_to 'privacy policy', privacy_policy_path}.
 #showcase
   .container
     .row.feature_wrapper
