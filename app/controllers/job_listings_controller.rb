@@ -79,6 +79,7 @@ class JobListingsController < ApplicationController
   end
 
   def check_for_subscription
+    return if current_admin.present?
     subscription = @company.subscription
     unless subscription and subscription.active?
       click_here_subscription = "<a href='/companies/#{@company.id}/subscriptions/new'>here</a>"

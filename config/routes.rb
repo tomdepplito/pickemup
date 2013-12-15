@@ -76,6 +76,7 @@ Pickemup::Application.routes.draw do
     end
   end
   resources :admins, only: [:index]
+  resources :agreements
   get "/admin/log_in" => "admins#sign_in"
   post "/admin/log_in" => "sessions#admin"
   post "/company_log_in" => "sessions#company"

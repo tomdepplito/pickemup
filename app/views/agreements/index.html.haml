@@ -1,0 +1,19 @@
+#housing
+  .container
+    %table
+      %tr
+        %th
+          Edit Agreement
+        %th
+          Company
+        %th
+          Job Listing
+        %th
+          Signed?
+        %th
+          Paid?
+      %tr
+        - @agreements.each do |agreement|
+          %td
+            = link_to "Edit", edit_agreement_path(id: agreement.id)
+          %tr

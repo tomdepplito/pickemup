@@ -65,6 +65,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def current_admin
+    @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+  end
+
   def not_valid_user?
     !user_signed_in? || current_user != @user
   end
@@ -79,5 +83,9 @@ class ApplicationController < ActionController::Base
 
   def company_signed_in?
     current_company.present?
+  end
+
+  def admin_signed_in?
+    current_admin.present?
   end
 end
